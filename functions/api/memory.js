@@ -66,13 +66,13 @@ export async function onRequestPost({ request, env }) {
   // Send moderation email to admin
   const adminEmail = env.ADMIN_EMAIL || 'admin@rashidnisarkhan.com';
   const approveUrl = `https://rashidnisarkhan.com/api/approve?token=${token}`;
-  await sendModerationEmail(adminEmail, memory, approveUrl);
+  await sendModerationEmail(adminEmail, memory, approveUrl, env.RESEND_API_KEY);
 
   return Response.json({ ok: true }, { headers: CORS });
 }
 
-// ── Email via MailChannels (free on Cloudflare) ────────────────────
-async function sendModerationEmail(to, memory, approveUrl) {
+// ── Email via Resend ───────────────────────────────────────────────
+async function sendModerationEmail(to, memory, approveUrl, apiKey) {
   const html = `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"></head>
@@ -106,19 +106,22 @@ async function sendModerationEmail(to, memory, approveUrl) {
 </html>`;
 
   try {
-    const res = await fetch('https://api.mailchannels.net/tx/v1/send', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
       body: JSON.stringify({
-        personalizations: [{ to: [{ email: to }] }],
-        from: { email: 'memories@rashidnisarkhan.com', name: 'RNK Memorial' },
+        from: 'RNK Memorial <memories@rashidnisarkhan.com>',
+        to: [to],
         subject: `Memory from ${memory.name} — awaiting approval`,
-        content: [{ type: 'text/html', value: html }],
+        html,
       }),
     });
     if (!res.ok) {
       const err = await res.text();
-      console.error('MailChannels error:', res.status, err);
+      console.error('Resend error:', res.status, err);
     }
   } catch (err) {
     console.error('Email send failed:', err);
