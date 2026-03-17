@@ -3,7 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rashid Nisar Khan — 1952–2013</title>
+<title>Rashid Nisar Khan — Founder of Ultimus Inc. | 1952–2013</title>
+<meta name="description" content="Memorial site for Rashid Nisar Khan (1952–2013) — founder of Ultimus Inc. and Chatty Solutions, entrepreneur, author, and poet based in Raleigh, NC. Born in Rawalpindi, Pakistan; built Ultimus into a global BPM software company with 300+ employees across 18 offices, recognized five consecutive years by Inc. 500 and Deloitte's Technology Fast 500.">
+<meta name="keywords" content="Rashid Nisar Khan, Ultimus Inc, Ultimus founder, Chatty Solutions, BPM software, Raleigh NC, Rawalpindi Pakistan, business process management, entrepreneur, Pakistani American">
+<link rel="canonical" href="https://rashidnisarkhan.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://rashidnisarkhan.com/">
+<meta property="og:title" content="Rashid Nisar Khan — Founder of Ultimus Inc. | 1952–2013">
+<meta property="og:description" content="A memorial for Rashid Nisar Khan — founder of Ultimus Inc. and Chatty Solutions, entrepreneur, author, and poet. From Rawalpindi to Raleigh, NC. 1952–2013.">
+<meta property="og:site_name" content="Rashid Nisar Khan Memorial">
+<meta property="profile:first_name" content="Rashid">
+<meta property="profile:last_name" content="Khan">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rashid Nisar Khan — Founder of Ultimus Inc. | 1952–2013">
+<meta name="twitter:description" content="A memorial for Rashid Nisar Khan — founder of Ultimus Inc. and Chatty Solutions, entrepreneur, author, and poet. From Rawalpindi to Raleigh, NC.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rashid Nisar Khan",
+  "url": "https://rashidnisarkhan.com/",
+  "description": "Pakistani-American entrepreneur, author, and poet. Founder of Ultimus Inc., a pioneer in business process management software, and founder of Chatty Solutions. Built Ultimus from a bootstrapped startup in 1994 into a global company with over 300 employees and 18 offices, recognized five consecutive years by Inc. 500 and Deloitte Technology Fast 500.",
+  "birthDate": "1952",
+  "deathDate": "2013",
+  "birthPlace": {
+    "@type": "Place",
+    "name": "Rawalpindi, Pakistan"
+  },
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Raleigh, North Carolina, USA"
+  },
+  "nationality": [
+    { "@type": "Country", "name": "Pakistan" },
+    { "@type": "Country", "name": "United States" }
+  ],
+  "jobTitle": "Founder & CEO",
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Ultimus Inc.",
+      "description": "Business process management software company founded in Raleigh, NC in 1994. Grew to 300+ employees across 18 global offices. Recognized by Inc. 500 and Deloitte Technology Fast 500 five consecutive years.",
+      "foundingDate": "1994",
+      "foundingLocation": "Raleigh, North Carolina"
+    },
+    {
+      "@type": "Organization",
+      "name": "Chatty Solutions",
+      "foundingLocation": "Raleigh, North Carolina"
+    }
+  ],
+  "sameAs": [],
+  "knowsAbout": ["Business Process Management", "BPM Software", "Workflow Automation", "Entrepreneurship"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
@@ -1079,6 +1139,49 @@
     margin-top: 0.8rem;
     min-height: 1.2em;
   }
+
+  /* ── Story illustration animations ───────────────────────────── */
+  @keyframes tankRumble {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    25%     { transform: translateY(-1.5px) rotate(0.4deg); }
+    75%     { transform: translateY(1px) rotate(-0.3deg); }
+  }
+  @keyframes barrelKick {
+    0%,80%,100% { transform: rotate(0deg); }
+    83%         { transform: rotate(-2.5deg); }
+    88%         { transform: rotate(1deg); }
+    94%         { transform: rotate(-0.5deg); }
+  }
+  @keyframes rocketWobble {
+    0%,55%,100% { transform: translateY(0) rotate(0deg); }
+    62%         { transform: translateY(-6px) rotate(0deg); }
+    68%         { transform: translateY(-4px) rotate(14deg); }
+    76%         { transform: translateY(4px) rotate(-6deg); }
+    84%         { transform: translateY(0) rotate(1.5deg); }
+  }
+  @keyframes flameFlicker {
+    0%,100% { transform: scaleY(1)   scaleX(1);   }
+    20%     { transform: scaleY(1.4) scaleX(0.7); }
+    40%     { transform: scaleY(0.7) scaleX(1.3); }
+    60%     { transform: scaleY(1.6) scaleX(0.6); }
+    80%     { transform: scaleY(0.9) scaleX(1.1); }
+  }
+  @keyframes cursorBlink {
+    0%,48%,100% { opacity: 1; }
+    50%,98%     { opacity: 0; }
+  }
+  @keyframes scanLine {
+    from { transform: translateY(0); }
+    to   { transform: translateY(94px); }
+  }
+  .tank-body   { animation: tankRumble 0.55s ease-in-out infinite; transform-origin: 110px 90px; }
+  .tank-barrel { animation: barrelKick 5s ease-in-out infinite;    transform-origin: 148px 59px; }
+  .rocket-body { animation: rocketWobble 4s ease-in-out infinite;  transform-origin: 80px 150px; }
+  .flame-1     { animation: flameFlicker 0.18s ease-in-out infinite;       transform-origin: 72px 222px; }
+  .flame-2     { animation: flameFlicker 0.22s ease-in-out infinite 0.05s; transform-origin: 80px 222px; }
+  .flame-3     { animation: flameFlicker 0.15s ease-in-out infinite 0.09s; transform-origin: 88px 222px; }
+  .term-cursor { animation: cursorBlink 1s step-end infinite; }
+  .scan-line   { animation: scanLine 3s linear infinite; }
 </style>
 </head>
 <body>
@@ -1291,35 +1394,42 @@
           <div class="story-art" aria-hidden="true">
             <svg viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Tank side view — Chawinda 1965 -->
-              <path d="M28 88 L36 72 L178 72 L190 82 L178 90 L38 90 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M28 88 L38 68 L52 72" stroke="#1c5c38" stroke-width="1.2"/>
-              <line x1="50" y1="74" x2="49" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="65" y1="73" x2="64" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="80" y1="73" x2="79" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="95" y1="73" x2="94" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="110" y1="73" x2="109" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="125" y1="73" x2="124" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="140" y1="73" x2="139" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="155" y1="73" x2="154" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="170" y1="73" x2="169" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
-              <path d="M82 72 L87 52 L142 51 L148 72 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
-              <line x1="100" y1="54" x2="98" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="116" y1="53" x2="114" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="132" y1="53" x2="130" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
-              <line x1="148" y1="60" x2="205" y2="59" stroke="#1c5c38" stroke-width="2.2" stroke-linecap="round"/>
-              <rect x="200" y="55" width="6" height="8" stroke="#1c5c38" stroke-width="1" rx="0.5"/>
-              <ellipse cx="112" cy="51" rx="10" ry="4" stroke="#1c5c38" stroke-width="0.9"/>
-              <circle cx="56"  cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="56"  cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <circle cx="82"  cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="82"  cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <circle cx="108" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="108" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <circle cx="134" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="134" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <circle cx="160" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="160" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <path d="M40 106 L36 90 L178 90 L182 106 C 180 112 172 112 166 107 L52 107 C 46 112 38 112 40 106 Z" stroke="#1c5c38" stroke-width="1.1" stroke-linejoin="round"/>
-              <circle cx="74"  cy="82" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <circle cx="112" cy="81" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <circle cx="150" cy="81" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-              <path d="M98 62 A 5 5 0 0 1 107 62" stroke="#1c5c38" stroke-width="1.1" fill="none"/>
-              <circle cx="101" cy="58" r="1.2" fill="#1c5c38"/>
+              <g class="tank-body">
+                <path d="M28 88 L36 72 L178 72 L190 82 L178 90 L38 90 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M28 88 L38 68 L52 72" stroke="#1c5c38" stroke-width="1.2"/>
+                <line x1="50" y1="74" x2="49" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="65" y1="73" x2="64" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="80" y1="73" x2="79" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="95" y1="73" x2="94" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="110" y1="73" x2="109" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="125" y1="73" x2="124" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="140" y1="73" x2="139" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="155" y1="73" x2="154" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="170" y1="73" x2="169" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+                <!-- Turret -->
+                <path d="M82 72 L87 52 L142 51 L148 72 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
+                <line x1="100" y1="54" x2="98" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="116" y1="53" x2="114" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
+                <line x1="132" y1="53" x2="130" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
+                <ellipse cx="112" cy="51" rx="10" ry="4" stroke="#1c5c38" stroke-width="0.9"/>
+                <!-- Road wheels + track -->
+                <circle cx="56"  cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="56"  cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <circle cx="82"  cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="82"  cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <circle cx="108" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="108" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <circle cx="134" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="134" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <circle cx="160" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="160" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <path d="M40 106 L36 90 L178 90 L182 106 C 180 112 172 112 166 107 L52 107 C 46 112 38 112 40 106 Z" stroke="#1c5c38" stroke-width="1.1" stroke-linejoin="round"/>
+                <circle cx="74"  cy="82" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <circle cx="112" cy="81" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <circle cx="150" cy="81" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+                <path d="M98 62 A 5 5 0 0 1 107 62" stroke="#1c5c38" stroke-width="1.1" fill="none"/>
+                <circle cx="101" cy="58" r="1.2" fill="#1c5c38"/>
+              </g>
+              <!-- Barrel (separate group for kick animation) -->
+              <g class="tank-barrel">
+                <line x1="148" y1="60" x2="205" y2="59" stroke="#1c5c38" stroke-width="2.2" stroke-linecap="round"/>
+                <rect x="200" y="55" width="6" height="8" stroke="#1c5c38" stroke-width="1" rx="0.5"/>
+              </g>
             </svg>
           </div>
           <p>He was thirteen years old when Cadet College was suddenly shut down as war broke out between Pakistan and India. Three hundred boys scattered for home. Rashid found himself alone on a railway platform in Rawalpindi, in a city he did not know, with no relatives and no plan.</p>
@@ -1337,45 +1447,48 @@
           <div class="story-art" aria-hidden="true">
             <svg viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Apollo Plum Jam rocket — 6 jam tins + cone + fins -->
-              <!-- Launch stand -->
+              <!-- Launch stand (static) -->
               <line x1="80" y1="220" x2="80" y2="235" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
               <line x1="65" y1="235" x2="95" y2="235" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
               <line x1="65" y1="235" x2="55" y2="248" stroke="#1c5c38" stroke-width="1.2" stroke-linecap="round"/>
               <line x1="95" y1="235" x2="105" y2="248" stroke="#1c5c38" stroke-width="1.2" stroke-linecap="round"/>
               <line x1="80" y1="235" x2="80" y2="248" stroke="#1c5c38" stroke-width="1.2" stroke-linecap="round"/>
-              <!-- 6 plum jam tins stacked (cylinder segments) -->
-              <rect x="64" y="188" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
-              <line x1="64" y1="199" x2="96" y2="199" stroke="#1c5c38" stroke-width="0.7"/>
-              <rect x="64" y="166" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
-              <line x1="64" y1="177" x2="96" y2="177" stroke="#1c5c38" stroke-width="0.7"/>
-              <rect x="64" y="144" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
-              <line x1="64" y1="155" x2="96" y2="155" stroke="#1c5c38" stroke-width="0.7"/>
-              <rect x="64" y="122" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
-              <line x1="64" y1="133" x2="96" y2="133" stroke="#1c5c38" stroke-width="0.7"/>
-              <rect x="64" y="100" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
-              <line x1="64" y1="111" x2="96" y2="111" stroke="#1c5c38" stroke-width="0.7"/>
-              <rect x="64" y="78" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
-              <line x1="64" y1="89" x2="96" y2="89" stroke="#1c5c38" stroke-width="0.7"/>
-              <!-- Nosecone -->
-              <path d="M64 78 L80 42 L96 78 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
-              <line x1="72" y1="62" x2="80" y2="46" stroke="#1c5c38" stroke-width="0.6"/>
-              <line x1="88" y1="62" x2="80" y2="46" stroke="#1c5c38" stroke-width="0.6"/>
-              <!-- Fins (4) — side visible -->
-              <path d="M64 200 L48 220 L64 215 Z" stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
-              <path d="M96 200 L112 220 L96 215 Z" stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
-              <path d="M66 205 L58 225 L66 222 Z" stroke="#1c5c38" stroke-width="0.8" stroke-linejoin="round"/>
-              <path d="M94 205 L102 225 L94 222 Z" stroke="#1c5c38" stroke-width="0.8" stroke-linejoin="round"/>
-              <!-- Welded seam marks (tin joints) -->
-              <line x1="64" y1="210" x2="62" y2="210" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="96" y1="210" x2="98" y2="210" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
-              <!-- Flame + smoke puff at bottom -->
-              <path d="M72 222 C 68 230 62 236 65 242 C 68 248 74 244 72 252" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
-              <path d="M80 222 C 80 232 78 240 82 246 C 85 252 84 258 80 258" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
-              <path d="M88 222 C 92 230 98 236 95 242 C 92 248 86 244 88 252" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
-              <!-- Label on tin -->
-              <rect x="68" y="192" width="24" height="9" rx="1" stroke="#1c5c38" stroke-width="0.7"/>
-              <line x1="70" y1="195" x2="90" y2="195" stroke="#1c5c38" stroke-width="0.6"/>
-              <line x1="70" y1="198" x2="86" y2="198" stroke="#1c5c38" stroke-width="0.5"/>
+              <!-- Rocket body (wobbles) -->
+              <g class="rocket-body">
+                <!-- 6 plum jam tins stacked -->
+                <rect x="64" y="188" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+                <line x1="64" y1="199" x2="96" y2="199" stroke="#1c5c38" stroke-width="0.7"/>
+                <rect x="64" y="166" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+                <line x1="64" y1="177" x2="96" y2="177" stroke="#1c5c38" stroke-width="0.7"/>
+                <rect x="64" y="144" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+                <line x1="64" y1="155" x2="96" y2="155" stroke="#1c5c38" stroke-width="0.7"/>
+                <rect x="64" y="122" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+                <line x1="64" y1="133" x2="96" y2="133" stroke="#1c5c38" stroke-width="0.7"/>
+                <rect x="64" y="100" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+                <line x1="64" y1="111" x2="96" y2="111" stroke="#1c5c38" stroke-width="0.7"/>
+                <rect x="64" y="78" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+                <line x1="64" y1="89" x2="96" y2="89" stroke="#1c5c38" stroke-width="0.7"/>
+                <!-- Nosecone -->
+                <path d="M64 78 L80 42 L96 78 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
+                <line x1="72" y1="62" x2="80" y2="46" stroke="#1c5c38" stroke-width="0.6"/>
+                <line x1="88" y1="62" x2="80" y2="46" stroke="#1c5c38" stroke-width="0.6"/>
+                <!-- Fins -->
+                <path d="M64 200 L48 220 L64 215 Z" stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M96 200 L112 220 L96 215 Z" stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M66 205 L58 225 L66 222 Z" stroke="#1c5c38" stroke-width="0.8" stroke-linejoin="round"/>
+                <path d="M94 205 L102 225 L94 222 Z" stroke="#1c5c38" stroke-width="0.8" stroke-linejoin="round"/>
+                <!-- Welded seam marks -->
+                <line x1="64" y1="210" x2="62" y2="210" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="96" y1="210" x2="98" y2="210" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Label on tin -->
+                <rect x="68" y="192" width="24" height="9" rx="1" stroke="#1c5c38" stroke-width="0.7"/>
+                <line x1="70" y1="195" x2="90" y2="195" stroke="#1c5c38" stroke-width="0.6"/>
+                <line x1="70" y1="198" x2="86" y2="198" stroke="#1c5c38" stroke-width="0.5"/>
+              </g>
+              <!-- Flames (flicker independently) -->
+              <path class="flame-1" d="M72 222 C 68 230 62 236 65 242 C 68 248 74 244 72 252" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
+              <path class="flame-2" d="M80 222 C 80 232 78 240 82 246 C 85 252 84 258 80 258" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
+              <path class="flame-3" d="M88 222 C 92 230 98 236 95 242 C 92 248 86 244 88 252" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
             </svg>
           </div>
           <p>The Apollo moon landing had just captivated the world. Rashid and his friend Pasha, both among the top chemistry students at Cadet College and both strongly opposed to the mandatory 3-mile morning runs, hatched a plan: if they could propose a sufficiently impressive scientific project, they would be excused from physical training.</p>
@@ -1400,8 +1513,15 @@
               <path d="M172 12 C 176 14 180 18 180 24" stroke="#1c5c38" stroke-width="0.8"/>
               <!-- Screen bezel -->
               <rect x="30" y="22" width="140" height="108" rx="4" stroke="#1c5c38" stroke-width="1.1"/>
-              <!-- Screen surface -->
+              <!-- Screen surface (clip scan-line inside) -->
+              <defs>
+                <clipPath id="screen-clip">
+                  <rect x="36" y="28" width="128" height="96" rx="2"/>
+                </clipPath>
+              </defs>
               <rect x="36" y="28" width="128" height="96" rx="2" stroke="#1c5c38" stroke-width="0.8"/>
+              <!-- Scan line sweeping down screen -->
+              <rect class="scan-line" x="36" y="28" width="128" height="4" fill="none" stroke="#1c5c38" stroke-width="0.4" stroke-dasharray="4 6" clip-path="url(#screen-clip)"/>
               <!-- Screen glare -->
               <path d="M42 32 C 50 30 62 30 70 34" stroke="#1c5c38" stroke-width="0.7" stroke-linecap="round"/>
               <!-- COBOL code lines on screen -->
@@ -1414,7 +1534,7 @@
               <line x1="44" y1="96" x2="155" y2="96" stroke="#1c5c38" stroke-width="0.8"/>
               <line x1="44" y1="105" x2="100" y2="105" stroke="#1c5c38" stroke-width="0.8"/>
               <!-- Cursor blink -->
-              <rect x="104" y="101" width="8" height="8" stroke="#1c5c38" stroke-width="1.1"/>
+              <rect class="term-cursor" x="104" y="101" width="8" height="8" stroke="#1c5c38" stroke-width="1.1"/>
               <!-- Monitor base/neck -->
               <path d="M80 140 L80 154 L120 154 L120 140" stroke="#1c5c38" stroke-width="1.3" stroke-linejoin="round"/>
               <rect x="55" y="154" width="90" height="10" rx="2" stroke="#1c5c38" stroke-width="1.2"/>
@@ -2195,8 +2315,28 @@
       e.preventDefault();
       const email = document.getElementById('excerptEmail').value.trim();
       if (!email) return;
-      excerptStatus.textContent = 'Thank you — watch your inbox for the first excerpt.';
-      excerptForm.reset();
+      const btn = excerptForm.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Subscribing…';
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const json = await res.json();
+        if (res.ok) {
+          excerptStatus.textContent = 'Thank you — watch your inbox for the first excerpt.';
+          excerptForm.reset();
+        } else {
+          excerptStatus.textContent = json.error || 'Something went wrong. Please try again.';
+        }
+      } catch {
+        excerptStatus.textContent = 'Something went wrong. Please try again.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Subscribe';
+      }
     });
   }
 </script>
