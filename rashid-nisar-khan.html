@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rashid Nisar Khan — 1952–2013</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --parchment:      #f5eedf;
+    --parchment-dark: #e8dfc8;
+    --ink:            #162318;
+    --ink-light:      #2e4535;
+    --green:          #1c5c38;
+    --green-mid:      #2e7a50;
+    --green-pale:     #cfe0d7;
+    --gold:           #8a6c1a;
+    --muted:          #5c6e62;
+    --tech:           #2d5a6a;
+    --rule:           rgba(28, 92, 56, 0.14);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans:  'Lato', -apple-system, sans-serif;
+    --mono:  'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  body {
+    background-color: var(--parchment);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── progress bar (tracks in-section scroll) ── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--green);
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 200;
+    transition: transform 0.08s linear;
+  }
+
+  /* ────────────────────────────────
+     SLIDE SYSTEM
+     All sections hidden by default.
+     JS controls display + transitions.
+  ──────────────────────────────── */
+  .slide { display: none; }
+
+  /* ── layout ── */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    min-height: 100vh;
+  }
+
+  /* ── full-bleed section tints ──
+     calc(-50vw + 50%) extends the ::before
+     exactly to the viewport edges for any
+     screen width, using the section's own 50%.
+  ── */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: -200px; bottom: -200px;        /* bleed past section padding */
+    left:  calc(-50vw + 50%);
+    right: calc(-50vw + 50%);
+    background: var(--section-tint, transparent);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hero-slide  { --section-tint: transparent; }
+  #biography   { --section-tint: rgba(28,  92,  56, 0.042); }
+  #stories     { --section-tint: rgba(138, 108,  26, 0.038); }
+  #poem        { --section-tint: rgba(28,  92,  56, 0.060); }
+  #legacy      { --section-tint: rgba(45,  90, 106, 0.038); }
+  #gallery     { --section-tint: rgba(232, 220, 192, 0.45); }
+  #book        { --section-tint: rgba(45,  90, 106, 0.048); }
+  #closing     { --section-tint: transparent; }
+
+  /* ────────────────────────────────
+     RIGHT-SIDE DOCK NAV
+  ──────────────────────────────── */
+  .side-nav {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .side-nav::after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 14px;
+    bottom: 14px;
+    width: 1px;
+    background: var(--rule);
+    pointer-events: none;
+  }
+
+  .side-nav-item {
+    display: flex;
+    flex-direction: row;        /* label LEFT of dot */
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    padding: 0.6rem 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .side-nav-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    border: 1.5px solid var(--green);
+    background: var(--parchment);
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.22s, box-shadow 0.22s;
+    transform-origin: center;
+  }
+
+  .side-nav-item.active .side-nav-dot {
+    background: var(--green);
+    box-shadow: 0 0 0 3px rgba(28, 92, 56, 0.12);
+  }
+
+  .side-nav-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.2s, transform 0.2s, color 0.2s;
+    white-space: nowrap;
+    pointer-events: none;
+    text-align: right;
+  }
+
+  .side-nav-item.active .side-nav-label {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--green);
+  }
+
+  @media (max-width: 1100px) { .side-nav { display: none; } }
+
+  /* ────────────────────────────────
+     FOUR-STAR MOTIF (four daughters)
+  ──────────────────────────────── */
+  .four-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .four-stars .rule-line {
+    display: inline-block;
+    width: 22px; height: 1px;
+    background: var(--rule);
+    vertical-align: middle;
+  }
+  .four-stars .star {
+    font-size: 0.48rem;
+    color: var(--green-mid);
+    opacity: 0.65;
+    line-height: 1;
+  }
+
+  /* ────────────────────────────────
+     HERO
+  ──────────────────────────────── */
+  .hero-slide {
+    padding: 7rem 0 5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 2.2rem;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 4.8rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.7s 0.12s ease both;
+  }
+  .hero-dates {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.7s 0.22s ease both;
+  }
+  .hero-stars-row {
+    margin-bottom: 2.4rem;
+    animation: fadeUp 0.7s 0.32s ease both;
+  }
+  .hero-quote {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink-light);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 2;
+    animation: fadeUp 0.7s 0.44s ease both;
+  }
+  .hero-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-top: 1.2rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ────────────────────────────────
+     SECTION ANATOMY
+  ──────────────────────────────── */
+  section.slide {
+    padding: 5.5rem 0;
+    position: relative;
+    overflow: visible;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 2.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative; z-index: 1;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
+    position: relative; z-index: 1;
+  }
+
+  p {
+    font-family: var(--sans);
+    font-weight: 300;
+    margin-bottom: 1.4rem;
+    color: var(--ink-light);
+    position: relative; z-index: 1;
+  }
+  p:last-of-type { margin-bottom: 0; }
+
+  /* ────────────────────────────────
+     PAKISTAN MAP — line art
+  ──────────────────────────────── */
+  .section-art {
+    position: absolute;
+    right: -30px;
+    top: 3.5rem;
+    width: 280px;
+    opacity: 0.13;      /* clearly visible, still a watermark */
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-art svg { width: 100%; height: auto; overflow: visible; }
+
+  .bio-intro {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  /* ── next-section button ── */
+  .section-next {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: flex-end;
+    position: relative; z-index: 1;
+  }
+
+  .next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .next-btn:hover { color: var(--green-mid); gap: 0.75rem; }
+  .next-btn svg {
+    width: 13px; height: 13px;
+    transition: transform 0.2s;
+  }
+  .next-btn:hover svg { transform: translateX(3px); }
+
+  /* ────────────────────────────────
+     STORIES
+  ──────────────────────────────── */
+  .stories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    margin-top: 3rem;
+    position: relative; z-index: 1;
+  }
+  .story {
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 0 2rem;
+  }
+  .story-border { background: var(--green); opacity: 0.3; border-radius: 2px; }
+  .story-number {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: var(--tech);
+    margin-bottom: 0.5rem;
+  }
+  .story-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+  .story-year {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  /* ────────────────────────────────
+     POEM
+  ──────────────────────────────── */
+  .poem-block {
+    background: var(--parchment-dark);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 3rem 3.5rem;
+    margin: 2rem 0;
+    position: relative; z-index: 1;
+  }
+  .poem-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--green);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+  .poem-byline {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .poem-lines {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 2.15;
+    color: var(--ink);
+  }
+  .poem-stanza { margin-bottom: 1.6rem; }
+  .poem-stanza:last-child { margin-bottom: 0; }
+  .urdu-block {
+    margin-top: 2.4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .urdu-line {
+    direction: rtl;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 1.35rem;
+    line-height: 3;
+    color: var(--ink-light);
+    text-align: right;
+    margin: 0;
+  }
+  .urdu-note {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  /* ────────────────────────────────
+     LEGACY
+  ──────────────────────────────── */
+  .legacy-items {
+    list-style: none;
+    margin: 2rem 0;
+    position: relative; z-index: 1;
+  }
+  .legacy-items li {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .legacy-items li:last-child { border-bottom: none; }
+  .legacy-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    margin-top: 0.72rem;
+    flex-shrink: 0;
+    opacity: 0.45;
+  }
+  .daughters-item .legacy-dot {
+    background: transparent;
+    border: 1.5px solid var(--green);
+    opacity: 0.7;
+  }
+  .legacy-text { color: var(--ink-light); font-weight: 300; position: relative; z-index: 1; }
+  .legacy-text strong { color: var(--ink); font-weight: 400; font-style: italic; }
+  .daughters-stars {
+    display: inline-flex;
+    gap: 0.28rem;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+  .daughters-stars .star {
+    font-size: 0.52rem;
+    color: var(--green-mid);
+    opacity: 0.6;
+    line-height: 1;
+  }
+
+  /* ────────────────────────────────
+     GALLERY
+  ──────────────────────────────── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+    position: relative; z-index: 1;
+  }
+  .gallery-item {
+    aspect-ratio: 3/4;
+    background: var(--parchment-dark);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s;
+    cursor: pointer;
+  }
+  .gallery-item:hover { border-color: var(--green-pale); }
+  .gallery-item img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .gallery-placeholder-icon { font-size: 1rem; color: var(--muted); opacity: 0.28; }
+  .gallery-placeholder-text {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.38;
+    text-align: center;
+  }
+
+  /* ── gallery caption overlay ── */
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(16, 32, 20, 0.88) 0%, rgba(16, 32, 20, 0.52) 70%, transparent 100%);
+    color: #f0ead8;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    padding: 1.8rem 0.85rem 0.75rem;
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+  /* ── lightbox ── */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(22, 35, 24, 0.93);
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .lightbox.open { opacity: 1; pointer-events: all; }
+  .lightbox img {
+    max-width: 90vw; max-height: 85vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute; top: 1.5rem; right: 1.8rem;
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(245,238,223,0.5);
+    cursor: pointer; background: none; border: none;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: var(--parchment); }
+
+  /* ────────────────────────────────
+     PUBLICATIONS
+  ──────────────────────────────── */
+  .books-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+    position: relative; z-index: 1;
+  }
+  .book-card {
+    background: var(--parchment-dark);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 2.4rem 2.8rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .book-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    background: var(--green);
+    padding: 0.18rem 0.55rem;
+    border-radius: 1px;
+    margin-bottom: 0.8rem;
+    opacity: 0.82;
+  }
+  .book-title {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+  .book-meta {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.2rem;
+  }
+  .book-desc {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    line-height: 1.75;
+    margin: 0;
+  }
+  .book-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--green);
+    color: var(--parchment);
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 1.6rem;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.22s, transform 0.18s;
+  }
+  .book-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .book-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  /* ────────────────────────────────
+     CLOSING
+  ──────────────────────────────── */
+  #closing {
+    text-align: center;
+    padding: 7rem 0 7rem;
+    position: relative;
+  }
+  .closing-ornament {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--green);
+    opacity: 0.4;
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.5em;
+  }
+  .closing-stars-row { margin-bottom: 2rem; }
+  .closing-text {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 460px;
+    margin: 0 auto 2rem;
+    line-height: 2;
+  }
+  .closing-sig {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  /* ────────────────────────────────
+     MEMORIES SECTION
+  ──────────────────────────────── */
+  .memories-root {
+    background: var(--parchment-dark);
+    border-top: 1px solid var(--rule);
+    padding: 6rem 0 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .memories-root::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .memories-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .memories-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
+  }
+  .memories-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .memories-divider-glyph {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--green);
+    opacity: 0.45;
+    letter-spacing: 0.4em;
+  }
+  .memories-header { margin-bottom: 3rem; }
+  .memories-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0.3rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .memories-header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 52ch;
+    line-height: 1.75;
+  }
+
+  /* ── submission form ── */
+  .memory-form-wrap {
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 2rem 2rem 1.6rem;
+    margin-bottom: 4rem;
+  }
+  .mf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .memory-form-wrap input,
+  .memory-form-wrap textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 0;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.22s;
+    resize: none;
+  }
+  .memory-form-wrap input::placeholder,
+  .memory-form-wrap textarea::placeholder { color: var(--muted); opacity: 0.55; }
+  .memory-form-wrap input:focus,
+  .memory-form-wrap textarea:focus { border-bottom-color: var(--green); }
+  .memory-form-wrap textarea { display: block; margin-bottom: 1.4rem; line-height: 1.7; }
+  .mf-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .mf-note {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  .mf-submit {
+    background: var(--green);
+    color: var(--parchment);
+    border: none;
+    padding: 0.55rem 1.4rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background 0.22s, transform 0.18s;
+  }
+  .mf-submit:hover { background: var(--green-mid); transform: translateY(-1px); }
+  .mf-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .mf-status {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 1rem;
+    min-height: 1.2em;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .mf-status.visible { opacity: 1; }
+  .mf-status.error { color: #8b2020; }
+
+  /* ── memory cards masonry ── */
+  .memories-empty {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    opacity: 0.5;
+    font-size: 0.95rem;
+  }
+  .memories-grid {
+    column-count: 3;
+    column-gap: 1.4rem;
+  }
+  .memory-card {
+    break-inside: avoid;
+    background: var(--parchment);
+    border: 1px solid rgba(28, 92, 56, 0.10);
+    border-top: 2.5px solid var(--green);
+    padding: 1.4rem 1.3rem 1.2rem;
+    margin-bottom: 1.4rem;
+    position: relative;
+    transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s;
+    box-shadow: 2px 3px 12px rgba(22, 35, 24, 0.07);
+  }
+  .memory-card:nth-child(6n+1) { transform: rotate(-2.1deg); }
+  .memory-card:nth-child(6n+2) { transform: rotate( 1.5deg); }
+  .memory-card:nth-child(6n+3) { transform: rotate(-0.7deg); }
+  .memory-card:nth-child(6n+4) { transform: rotate( 2.3deg); }
+  .memory-card:nth-child(6n+5) { transform: rotate(-1.6deg); }
+  .memory-card:nth-child(6n+6) { transform: rotate( 0.9deg); }
+  .memory-card:hover {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow: 0 14px 40px rgba(22, 35, 24, 0.14);
+    z-index: 2;
+  }
+  .memory-card-quote {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    line-height: 0.6;
+    color: var(--green);
+    opacity: 0.22;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+  .memory-card-text {
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+  }
+  .memory-card-from {
+    border-top: 1px solid var(--rule);
+    padding-top: 0.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .memory-card-name {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .memory-card-rel {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    opacity: 0.7;
+  }
+
+  /* ── responsive ── */
+  @media (max-width: 700px) {
+    .poem-block { padding: 2rem 1.5rem; }
+    .story { grid-template-columns: 2px 1fr; gap: 0 1.2rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .book-card { grid-template-columns: 1fr; text-align: center; }
+    .book-btn { margin: 0.5rem auto 0; }
+    .section-art { display: none; }
+    .mf-row { grid-template-columns: 1fr; }
+    .memories-grid { column-count: 1; }
+    .mf-foot { flex-direction: column; align-items: flex-start; }
+  }
+  @media (min-width: 701px) and (max-width: 900px) {
+    .memories-grid { column-count: 2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ── SIDE NAV — right side ── -->
+<nav class="side-nav" id="sideNav" aria-label="Page sections">
+  <button class="side-nav-item active" data-section="hero">
+    <span class="side-nav-label">Home</span>
+    <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" data-section="biography">
+    <span class="side-nav-label">A Life</span>
+    <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" data-section="stories">
+    <span class="side-nav-label">Stories</span>
+    <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" data-section="poem">
+    <span class="side-nav-label">Poem</span>
+    <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" data-section="legacy">
+    <span class="side-nav-label">Legacy</span>
+    <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" data-section="gallery">
+    <span class="side-nav-label">Gallery</span>
+    <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" data-section="book">
+    <span class="side-nav-label">Books</span>
+    <div class="side-nav-dot"></div>
+  </button>
+</nav>
+
+<div class="page">
+
+  <!-- ══ HERO ══ -->
+  <div class="slide hero-slide" id="hero">
+    <header style="text-align:center; padding: 7rem 0 5rem;">
+      <p class="hero-eyebrow">In Memoriam &ensp;·&ensp; Raleigh, North Carolina</p>
+      <h1 class="hero-name">Rashid Nisar Khan</h1>
+      <p class="hero-dates">1952 &mdash; 2013</p>
+      <div class="hero-stars-row">
+        <div class="four-stars">
+          <span class="rule-line"></span>
+          <span class="star">✦</span><span class="star">✦</span>
+          <span class="star">✦</span><span class="star">✦</span>
+          <span class="rule-line"></span>
+        </div>
+      </div>
+      <blockquote class="hero-quote">
+        "Memories of a life reside in the gardens of my heart. Like the gardener who lovingly tends his garden for the pleasure of bloom, I nourish these memories because they comfort my soul and give meaning to my life."
+        <cite>— In the Gardens of My Heart</cite>
+      </blockquote>
+    </header>
+    <div class="section-next">
+      <button class="next-btn" data-target="biography">
+        A Life
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ BIOGRAPHY ══ -->
+  <section class="slide" id="biography">
+
+    <!-- Pakistan map — line art watermark, 13% opacity -->
+    <div class="section-art" aria-hidden="true">
+      <svg viewBox="0 0 265 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main border outline, clockwise from top/GB -->
+        <path
+          d="M 162 12
+             L 198 20
+             L 218 36
+             L 232 62
+             L 240 96
+             L 238 128
+             L 225 155
+             L 210 178
+             L 188 196
+             L 162 208
+             L 135 212
+             L 108 208
+             L 82  198
+             L 56  182
+             L 36  158
+             L 24  128
+             L 22  96
+             L 32  68
+             L 48  46
+             L 72  28
+             L 102 16
+             L 130 10
+             L 162 12 Z"
+          stroke="#1c5c38"
+          stroke-width="1.8"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+        <!-- Indus River — dashed from Rawalpindi south to coast -->
+        <path
+          d="M 210 58 C 215 80 218 108 212 135 C 206 160 196 182 180 200"
+          stroke="#1c5c38"
+          stroke-width="0.9"
+          stroke-dasharray="4 5"
+          opacity="0.75"
+        />
+        <!-- Rawalpindi birthplace dot -->
+        <circle cx="210" cy="58" r="4.5" fill="#1c5c38"/>
+        <!-- Small crescent arc near Rawalpindi (Pakistan symbol) -->
+        <path
+          d="M 218 50 A 10 10 0 0 1 228 62"
+          stroke="#1c5c38"
+          stroke-width="1.2"
+          opacity="0.8"
+          fill="none"
+        />
+        <!-- Karakoram / mountain range hint (northern ridge) -->
+        <path
+          d="M 102 16 L 115 8 L 130 10 L 145 6 L 162 12 L 180 8 L 198 20"
+          stroke="#1c5c38"
+          stroke-width="0.7"
+          opacity="0.5"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <p class="section-label">A Life</p>
+    <h2>Poet, entrepreneur, soldier's son</h2>
+
+    <p class="bio-intro">Rashid was born in the summer of 1952 in Rawalpindi, Pakistan, in the lap of the Himalayas — the third son of an army officer whose loyalty to his uniform would become the first great story Rashid ever heard told.</p>
+
+    <p>He grew up across the garrison towns of Pakistan, sleeping under stars on summer nights by the River Kabul, listening to his mother recount the harrowing months his parents spent imprisoned during the Partition of 1947. These were stories of sacrifice and courage, and they planted in him a love of country, a respect for persistence, and a reverence for those who endure. His childhood was vivid and sometimes dangerous — jumping barefoot over cobras, watching his father drive to the front lines of the 1965 war with India, and at thirteen, finding himself lost and entirely alone on the streets of a wartime Rawalpindi, navigating his way across a country at war through sheer determination.</p>
+
+    <p>He attended Cadet College Hassan Abdal, where he rose from the bottom of his class — spurred by the pride of being a war hero's son — to the very top. He was awarded a prestigious CENTO scholarship to study at the Middle East Technical University in Ankara, Turkey, where he survived a military siege of his university dormitory. He went on to earn two Bachelor's degrees from MIT, a Master's from UC Berkeley, and an MBA from Harvard Business School.</p>
+
+    <p>In 1982, with a negative net worth, a young wife named Fatima, and a cat named Billo, Rashid founded Sintech Inc. from the basement of a small house in Wrentham, Massachusetts. He would go on to build four companies — most notably Ultimus Inc., a pioneer in business process management that grew to over 300 employees across 18 countries. But numbers never defined him. He was defined by the way he saw the world: as a poet sees it, in metaphor, in memory, in the beauty of small things faithfully tended.</p>
+
+    <p>He began writing his autobiography, <em>In the Gardens of My Heart</em>, in 1997, intending it as a gift to his daughters. In 2010, he was diagnosed with pancreatic cancer. He published the book online, chapter by chapter, determined to finish what he had started. He passed away in 2013, leaving behind four daughters, a wife who cared for him with boundless love, and a life lived with the full force of an uncommon heart.</p>
+
+    <div class="section-next">
+      <button class="next-btn" data-target="stories">
+        Stories
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══ STORIES ══ -->
+  <section class="slide" id="stories">
+    <p class="section-label">Three Stories</p>
+    <h2>Moments that made him</h2>
+    <p>He believed each chapter of life is its own story. Here are three that tell you who he was.</p>
+
+    <div class="stories-grid">
+      <div class="story">
+        <div class="story-border"></div>
+        <div class="story-body">
+          <p class="story-number">Story_01</p>
+          <h3 class="story-title">Lost in a War</h3>
+          <p class="story-year">September 1965 &ensp;·&ensp; Pakistan–India War</p>
+          <p>He was thirteen years old when Cadet College was suddenly shut down as war broke out between Pakistan and India. Three hundred boys scattered for home. Rashid found himself alone on a railway platform in Rawalpindi, in a city he did not know, with no relatives and no plan.</p>
+          <p>He boarded a bus to Peshawar — packed with Pathan tribesmen, a man who chain-smoked K2 cigarettes, and an old man who offered him a pinch of <em>naswar</em> before charitably deciding that it was not suitable for young people. He navigated two more buses across an unfamiliar city, recognized a <em>tandoor</em> shop he had visited once the previous year, and traced his way to his uncle's home by memory alone.</p>
+          <p>While he ate olives and bread in Peshawar and watched anti-aircraft fire light up the night sky, his mother was driving through artillery bombardment, searching for him in a deserted Sialkot. His father was commanding his regiment in the tank battle of Chawinda that military historians would later call the battle that saved Pakistan. None of them knew where the others were. When it was over, the son of a war hero returned to school — and began, for the first time, to take his studies seriously.</p>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-border"></div>
+        <div class="story-body">
+          <p class="story-number">Story_02</p>
+          <h3 class="story-title">Apollo Plum Jam</h3>
+          <p class="story-year">1969 &ensp;·&ensp; Cadet College Hassan Abdal</p>
+          <p>The Apollo moon landing had just captivated the world. Rashid and his friend Pasha, both among the top chemistry students at Cadet College and both strongly opposed to the mandatory 3-mile morning runs, hatched a plan: if they could propose a sufficiently impressive scientific project, they would be excused from physical training.</p>
+          <p>They decided to build Pakistan's first rocket. The fuel would be a mixture of sugar and potassium sulphate. The body would be welded from six empty plum jam tins — the cheapest jam the college could afford and one they had eaten far too much of. The scientific mission: to study the effects of gravity on the mental agility of ants, using an enclosed maze and a two-stage parachute system. They named it <em>Apollo Plum Jam</em>.</p>
+          <p>The test firing, conducted before a crowd of classmates and their bemused chemistry teacher Mr. Saleemi, ended in a spectacular fireball that scorched the lab tables, sent sulphuric acid across the floor, and scattered weights under every desk — leaving the rocket standing eerily above the smoke, entirely empty of fuel. An outdoor test followed, producing a rocket that lifted a fraction of an inch, flipped over, and burned out on the ground with great dignity and no altitude. They were back to running on the Grand Trunk Road within ten days. He told this story for the rest of his life.</p>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-border"></div>
+        <div class="story-body">
+          <p class="story-number">Story_03</p>
+          <h3 class="story-title">The First Sale</h3>
+          <p class="story-year">March 1983 &ensp;·&ensp; Wrentham, Massachusetts</p>
+          <p>For six months, Rashid had been debugging his invention alone in the damp basement of a small house, reaching Frust17 — his own name for the seventeenth version of a debugging program, so named by abbreviating the word "frustration." Late one night, covering the computer screen with a sheet of paper to reduce the glare, he spotted a glitch lasting ten-billionths of a second that had been crashing the system at random. He pirated the fix from a chip mounted on a farewell trophy given to him by a former colleague, repaired the circuit by flashlight, and went outside to sit on the front steps and listen to the gypsy moths in the trees.</p>
+          <p>When he finally brought his SIMA system — a personal computer interface for industrial testing machines — to his first real prospect, the meeting lasted one week of eighteen-hour days. The customer was Albany International, a NASA subcontractor testing the heat-shield fabric that protected the Space Shuttle during re-entry. The program manager, a dour no-nonsense man named Fred, gave him a conditional purchase order: make it work in one week, or take it home. Rashid made it work in a week.</p>
+          <p>He drove home from that first sale remembering, with quiet amusement, the Apollo Plum Jam rocket he had tried to build in high school — and how this was the closest he would ever get to the astronauts. Instron, the industry giant with 80% market share, had predicted the entire market for such systems was two units per year. Rashid sold six in his first twelve months, from a basement, with one employee and a cat named Billo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-next">
+      <button class="next-btn" data-target="poem">
+        The Poem
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══ POEM ══ -->
+  <section class="slide" id="poem">
+    <p class="section-label">The Poem</p>
+    <h2>The residents of my heart</h2>
+    <p>He called himself a frustrated poet. He loved Urdu ghazals — Iqbal, Ghalib, Mir Dard — and spent his adult life wishing he could write one. In August 1994, inspired by his daughters, he did. He wrote it in both English and Urdu. He considered it among the most important things he ever made.</p>
+
+    <div class="poem-block">
+      <p class="poem-title">The Residents of My Heart</p>
+      <p class="poem-byline">By Rashid N. Khan — August 1994<br><em>Inspired by my daughters who live in my heart</em></p>
+      <div class="poem-lines">
+        <div class="poem-stanza">
+          I used to pray for short days and short nights from the Keeper of Time<br>
+          Life's a fleeting moment since opened eyes, the Residents of My Heart
+        </div>
+        <div class="poem-stanza">
+          Nary a sign of a rose in my deserted heart before they were born<br>
+          Blooming Spring their companion made, the Residents of My Heart
+        </div>
+        <div class="poem-stanza">
+          Restlessness found no cure in the virtues of the mosque or vices of the tavern<br>
+          Their innocent ways gave peace to my soul, the Residents of My Heart
+        </div>
+        <div class="poem-stanza">
+          O' lonely nights, my carving the scars of anguish was also God's Purpose<br>
+          Scars into roses, heart into rose garden made, the Residents of My Heart
+        </div>
+        <div class="poem-stanza">
+          Why expect soul's nourishment Rashid from the shallow people of earth?<br>
+          Gave joy, gave sadness, gave you all you need, the Residents of My Heart
+        </div>
+      </div>
+      <div class="urdu-block">
+        <p class="urdu-line">کرتا تھا چھوٹے چھوٹے شب و روز کی دعا میں وقت ناپنے والے سے</p>
+        <p class="urdu-line">زندگی اک لمحہ بن گئ جب کھولی آنکھیں میرے دل میں رہنے والوں نے</p>
+        <p class="urdu-note">میرے دل میں رہنے والے — <em>The Residents of My Heart</em></p>
+      </div>
+    </div>
+
+    <p>He dedicated his book: <em>"This book is for those who live in my heart, or come and visit me there."</em></p>
+
+    <div class="section-next">
+      <button class="next-btn" data-target="legacy">
+        Legacy
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══ LEGACY ══ -->
+  <section class="slide" id="legacy">
+    <p class="section-label">Legacy</p>
+    <h2>What he left behind</h2>
+    <p>He believed in doing one's part as well as one could, and leaving the rest to others. His mentor Dennis once rescued an earthworm from a footpath and told him: <em>"I have done my small part to help the earthworm and the world. Now it is up to the earthworm and the other people of the world to do their part."</em> Rashid spent the rest of his life trying to live up to those words.</p>
+
+    <ul class="legacy-items">
+      <li>
+        <div class="legacy-dot"></div>
+        <div class="legacy-text"><strong>Sintech Inc.</strong> — Founded in 1982 from his basement with a negative net worth. Pioneered PC-based laboratory testing systems. Sold to MTS Systems Corporation in 1989.</div>
+      </li>
+      <li>
+        <div class="legacy-dot"></div>
+        <div class="legacy-text"><strong>Ultimus Inc.</strong> — Founded in 1994 without outside investment. A pioneer in business process management. Grew to over 300 employees in 18 offices across the globe. Recognized by Inc. 500 and Deloitte &amp; Touche's Technology Fast 500 five consecutive years.</div>
+      </li>
+      <li class="daughters-item">
+        <div class="legacy-dot"></div>
+        <div class="legacy-text">
+          <strong>Four daughters</strong><span class="daughters-stars"><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span></span> — his greatest work, the truest residents of his heart. He wrote his autobiography so they would know their Pakistani roots, and perhaps inherit some love for the country of their father.
+        </div>
+      </li>
+      <li>
+        <div class="legacy-dot"></div>
+        <div class="legacy-text"><strong>A philosophy of bootstrapping</strong> — he believed companies should be built on vision, patience, and the refusal to surrender control to capital. Long-term perspective, unyielding determination, 10x competitive advantage. He called venture capital "opium."</div>
+      </li>
+      <li>
+        <div class="legacy-dot"></div>
+        <div class="legacy-text"><strong>A model of persistence</strong> — from the wartime streets of Rawalpindi at thirteen to the hospitals of Raleigh at sixty, he exemplified what it looks like when a person simply refuses to stop. He was diagnosed with pancreatic cancer in 2010 and spent his remaining years writing the book he had promised his daughters since 1997.</div>
+      </li>
+    </ul>
+
+    <div class="section-next">
+      <button class="next-btn" data-target="gallery">
+        Gallery
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ══ -->
+  <section class="slide" id="gallery">
+    <p class="section-label">Gallery</p>
+    <h2>A life in photographs</h2>
+    <p>From Rawalpindi to Raleigh. Photographs coming soon.</p>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-src="photos/rashid-wedding-2009.jpg" data-caption="Reciting the poem Gardens of my Heart at his daughter's wedding in 2009">
+        <span class="gallery-placeholder-icon">◈</span><span class="gallery-placeholder-text">Photo coming</span>
+        <div class="gallery-caption">Reciting the poem Gardens of my Heart at his daughter's wedding in 2009</div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="">
+        <span class="gallery-placeholder-icon">◈</span><span class="gallery-placeholder-text">Photo coming</span>
+        <div class="gallery-caption"></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="">
+        <span class="gallery-placeholder-icon">◈</span><span class="gallery-placeholder-text">Photo coming</span>
+        <div class="gallery-caption"></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="">
+        <span class="gallery-placeholder-icon">◈</span><span class="gallery-placeholder-text">Photo coming</span>
+        <div class="gallery-caption"></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="">
+        <span class="gallery-placeholder-icon">◈</span><span class="gallery-placeholder-text">Photo coming</span>
+        <div class="gallery-caption"></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="">
+        <span class="gallery-placeholder-icon">◈</span><span class="gallery-placeholder-text">Photo coming</span>
+        <div class="gallery-caption"></div>
+      </div>
+    </div>
+
+    <div class="section-next">
+      <button class="next-btn" data-target="book">
+        Publications
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══ PUBLICATIONS ══ -->
+  <section class="slide" id="book">
+    <p class="section-label">Publications</p>
+    <h2>Two books, one life's work</h2>
+    <p>He wrote the way he built companies — with patience, precision, and a refusal to leave things unfinished. One book is the record of a field he helped define. The other is the record of a life.</p>
+
+    <div class="books-stack">
+      <div class="book-card">
+        <div>
+          <span class="book-tag">Memoir</span>
+          <p class="book-title">In the Gardens of My Heart</p>
+          <p class="book-meta">Rashid N. Khan &ensp;·&ensp; Written 1997–2013</p>
+          <p class="book-desc">An autobiography that begins in the garrison towns of 1950s Pakistan and ends in a hospital in North Carolina — told with the precision of an engineer, the warmth of a father, and the eye of a poet who always knew he was one.</p>
+        </div>
+        <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+          <a href="files/In_The_Gardens_of_My_Heart_Rashid_ Khan.pdf" class="book-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/>
+            </svg>
+            Read PDF
+          </a>
+          <a href="files/In_The_Gardens_of_My_Heart_Rashid_ Khan.pdf" class="book-btn" download="In the Gardens of My Heart — Rashid Khan.pdf" style="background:transparent;color:var(--green);border:1px solid var(--green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 15V3m0 12l-4-4m4 4l4-4"/>
+              <path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/>
+            </svg>
+            Download
+          </a>
+        </div>
+      </div>
+      <div class="book-card">
+        <div>
+          <span class="book-tag">Technical</span>
+          <p class="book-title">Business Process Management</p>
+          <p class="book-meta">A Practical Guide &ensp;·&ensp; Meghan-Kiffer Press, 2004 &ensp;·&ensp; 334 pp.</p>
+          <p class="book-desc">The definitive practitioner's guide to BPM — written by the founder of Ultimus Inc. at a time when the discipline was still taking shape. Covers workflow automation, organisational change, and the technology behind process-driven enterprises.</p>
+        </div>
+        <a href="https://www.amazon.com/Business-Process-Management-Practical-Guide/dp/0929652320" class="book-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          View on Amazon
+        </a>
+      </div>
+    </div>
+
+    <div class="section-next">
+      <button class="next-btn" data-target="closing">
+        Farewell
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══ CLOSING ══ -->
+  <div class="slide" id="closing">
+    <div style="text-align:center; padding: 7rem 0;">
+      <div class="closing-ornament">❧</div>
+      <div class="closing-stars-row">
+        <div class="four-stars">
+          <span class="rule-line"></span>
+          <span class="star">✦</span><span class="star">✦</span>
+          <span class="star">✦</span><span class="star">✦</span>
+          <span class="rule-line"></span>
+        </div>
+      </div>
+      <p class="closing-text">
+        "These orchids are scattered in my gardens, exploding with life, but ever ready for lifelessness as soon as the gardener misses a heartbeat. In these pages I preserve these orchids before memory fails."
+      </p>
+      <p class="closing-sig">Rashid Nisar Khan &ensp;·&ensp; Raleigh, NC &ensp;·&ensp; 1952–2013</p>
+      <a href="#memories" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'});return false;"
+         style="display:inline-block;margin-top:3rem;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);opacity:0.55;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:opacity 0.2s;"
+         onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='0.55'">
+        Share a memory ↓
+      </a>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- ══ MEMORIES ══ -->
+<section class="memories-root" id="memories">
+  <div class="memories-inner">
+
+    <div class="memories-divider">
+      <span class="memories-divider-line"></span>
+      <span class="memories-divider-glyph">✦ ✦ ✦ ✦</span>
+      <span class="memories-divider-line"></span>
+    </div>
+
+    <div class="memories-header">
+      <p class="section-label">Memories</p>
+      <h2>Voices from the garden</h2>
+      <p>If you knew Rashid — as a colleague, a friend, a neighbour, or one of the many whose path he crossed — leave a memory here. No account needed. Each word is read before it appears.</p>
+    </div>
+
+    <!-- Submission form -->
+    <div class="memory-form-wrap">
+      <form id="memoryForm" novalidate>
+        <div class="mf-row">
+          <input type="text" name="name" id="mfName" placeholder="Your name" required maxlength="80" autocomplete="name">
+          <input type="text" name="relationship" id="mfRel" placeholder="How you knew him (optional)" maxlength="100">
+        </div>
+        <textarea name="text" id="mfText" placeholder="Your memory of Rashid…" required maxlength="1200" rows="5"></textarea>
+        <div class="mf-foot">
+          <span class="mf-note">Memories are reviewed before appearing</span>
+          <button type="submit" class="mf-submit" id="mfSubmit">Submit memory</button>
+        </div>
+      </form>
+      <p class="mf-status" id="mfStatus"></p>
+    </div>
+
+    <!-- Memory cards -->
+    <div class="memories-grid" id="memoriesGrid">
+      <p class="memories-empty" id="memoriesEmpty" style="display:none;">No memories yet — be the first to share one.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── lightbox ── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose">Close &times;</button>
+  <figure style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;max-width:90vw;">
+    <img id="lightboxImg" src="" alt="">
+    <figcaption id="lightboxCaption" style="font-family:var(--sans);font-size:0.78rem;font-weight:300;color:rgba(245,238,223,0.65);letter-spacing:0.03em;text-align:center;max-width:60ch;"></figcaption>
+  </figure>
+</div>
+
+<script>
+  // ═══════════════════════════════════════════════════════
+  //  SLIDE CONTROLLER
+  //  Cross-fade between sections. JS sets inline opacity
+  //  and display — no CSS transition classes needed.
+  // ═══════════════════════════════════════════════════════
+  let currentSlide = null;
+  let transitioning = false;
+
+  function goTo(id) {
+    const next = document.getElementById(id);
+    if (!next || next === currentSlide || transitioning) return;
+    transitioning = true;
+
+    const prev = currentSlide;
+    currentSlide = next;
+    updateNavActive(id);
+
+    if (!prev) {
+      // Initial load — show without transition
+      next.style.display = 'block';
+      transitioning = false;
+      return;
+    }
+
+    // ── fade out current ──
+    prev.style.transition = 'opacity 0.42s ease';
+    prev.style.opacity    = '0';
+
+    prev.addEventListener('transitionend', function handler(e) {
+      if (e.propertyName !== 'opacity') return;
+      prev.removeEventListener('transitionend', handler);
+      prev.style.display    = 'none';
+      prev.style.transition = '';
+      prev.style.opacity    = '';
+
+      // Scroll to top instantly before showing next
+      window.scrollTo(0, 0);
+
+      // ── fade in next ──
+      next.style.opacity    = '0';
+      next.style.display    = 'block';
+      next.style.transition = '';
+
+      // Double rAF: ensures display:block is painted before transition
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          next.style.transition = 'opacity 0.55s ease';
+          next.style.opacity    = '1';
+
+          next.addEventListener('transitionend', function h2(e) {
+            if (e.propertyName !== 'opacity') return;
+            next.removeEventListener('transitionend', h2);
+            next.style.transition = '';
+            next.style.opacity    = '';
+            transitioning = false;
+          });
+        });
+      });
+    });
+  }
+
+  // ── nav active state ──
+  const navItems = Array.from(document.querySelectorAll('.side-nav-item'));
+
+  function updateNavActive(id) {
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.dataset.section === id);
+    });
+  }
+
+  // ── wire up all [data-target] buttons ──
+  document.querySelectorAll('[data-target]').forEach(btn => {
+    btn.addEventListener('click', () => goTo(btn.dataset.target));
+  });
+
+  // ── wire up side nav buttons ──
+  navItems.forEach(item => {
+    item.addEventListener('click', () => goTo(item.dataset.section));
+  });
+
+  // ── initial load ──
+  const startId = (window.location.hash.slice(1) in
+    {'hero':1,'biography':1,'stories':1,'poem':1,'legacy':1,'gallery':1,'book':1,'closing':1})
+    ? window.location.hash.slice(1) : 'hero';
+
+  goTo(startId);
+
+  // ═══════════════════════════════════════════════════════
+  //  PROGRESS BAR — tracks scroll within current slide
+  // ═══════════════════════════════════════════════════════
+  const progressBar = document.getElementById('progressBar');
+
+  function updateProgress() {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.transform = total > 0
+      ? `scaleX(${Math.min(window.scrollY / total, 1)})`
+      : 'scaleX(1)';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // ═══════════════════════════════════════════════════════
+  //  macOS DOCK MAGNIFICATION (right-side nav)
+  // ═══════════════════════════════════════════════════════
+  const sideNavEl  = document.getElementById('sideNav');
+  const DOCK_REACH = 88;
+  const DOCK_MAX   = 2.5;
+
+  function applyDock(mouseY) {
+    navItems.forEach(item => {
+      const rect   = item.getBoundingClientRect();
+      const center = (rect.top + rect.bottom) / 2;
+      const dist   = Math.abs(mouseY - center);
+      let scale    = 1;
+
+      if (dist < DOCK_REACH) {
+        const t = 1 - dist / DOCK_REACH;
+        scale = 1 + (DOCK_MAX - 1) * (0.5 + 0.5 * Math.cos(Math.PI * (1 - t)));
+      }
+
+      const dot   = item.querySelector('.side-nav-dot');
+      const label = item.querySelector('.side-nav-label');
+
+      dot.style.transform = `scale(${scale.toFixed(3)})`;
+
+      if (scale > 1.5) {
+        const fade = Math.min((scale - 1.5) / 0.8, 1);
+        label.style.opacity   = fade;
+        label.style.transform = 'translateX(0)';
+        label.style.color     = 'var(--green)';
+      } else if (!item.classList.contains('active')) {
+        label.style.opacity   = '0';
+        label.style.transform = 'translateX(6px)';
+      }
+    });
+  }
+
+  function resetDock() {
+    navItems.forEach(item => {
+      item.querySelector('.side-nav-dot').style.transform = 'scale(1)';
+      if (!item.classList.contains('active')) {
+        const label = item.querySelector('.side-nav-label');
+        label.style.opacity   = '0';
+        label.style.transform = 'translateX(6px)';
+      }
+    });
+  }
+
+  sideNavEl.addEventListener('mousemove', e => applyDock(e.clientY));
+  sideNavEl.addEventListener('mouseleave', resetDock);
+
+  // ═══════════════════════════════════════════════════════
+  //  GALLERY LIGHTBOX
+  // ═══════════════════════════════════════════════════════
+  const lightbox         = document.getElementById('lightbox');
+  const lightboxImg      = document.getElementById('lightboxImg');
+  const lightboxCaption  = document.getElementById('lightboxCaption');
+  const lightboxClose    = document.getElementById('lightboxClose');
+
+  // Swap placeholder state for gallery items that have a real photo
+  document.querySelectorAll('.gallery-item[data-src]').forEach(item => {
+    const src = item.dataset.src;
+    if (!src) return;
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = item.dataset.caption || '';
+    item.prepend(img);
+    // hide placeholder elements once image loads
+    img.addEventListener('load', () => {
+      item.querySelectorAll('.gallery-placeholder-icon, .gallery-placeholder-text').forEach(el => el.style.display = 'none');
+    });
+  });
+
+  document.getElementById('galleryGrid').addEventListener('click', e => {
+    const item = e.target.closest('.gallery-item');
+    if (!item || !item.dataset.src) return;
+    lightboxImg.src = item.dataset.src;
+    lightboxImg.alt = item.dataset.caption || '';
+    lightboxCaption.textContent = item.dataset.caption || '';
+    lightbox.classList.add('open');
+  });
+
+  lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) lightbox.classList.remove('open');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') lightbox.classList.remove('open');
+  });
+
+  // ═══════════════════════════════════════════════════════
+  //  MEMORIES — load + submit
+  // ═══════════════════════════════════════════════════════
+  const memoriesGrid  = document.getElementById('memoriesGrid');
+  const memoriesEmpty = document.getElementById('memoriesEmpty');
+  const memoryForm    = document.getElementById('memoryForm');
+  const mfStatus      = document.getElementById('mfStatus');
+  const mfSubmit      = document.getElementById('mfSubmit');
+
+  function buildCard(m) {
+    const card = document.createElement('div');
+    card.className = 'memory-card';
+    card.innerHTML = `
+      <div class="memory-card-quote">"</div>
+      <p class="memory-card-text">${escapeHtml(m.text)}</p>
+      <div class="memory-card-from">
+        <span class="memory-card-name">${escapeHtml(m.name)}</span>
+        ${m.relationship ? `<span class="memory-card-rel">${escapeHtml(m.relationship)}</span>` : ''}
+      </div>`;
+    return card;
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function showStatus(msg, isError) {
+    mfStatus.textContent = msg;
+    mfStatus.className = 'mf-status visible' + (isError ? ' error' : '');
+  }
+
+  async function loadMemories() {
+    try {
+      const res = await fetch('/api/memory');
+      if (!res.ok) return;
+      const memories = await res.json();
+      if (!memories.length) { memoriesEmpty.style.display = ''; return; }
+      memoriesEmpty.style.display = 'none';
+      memories.forEach(m => memoriesGrid.appendChild(buildCard(m)));
+    } catch {
+      // silently fail — memories section just stays empty
+    }
+  }
+
+  memoryForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = document.getElementById('mfName').value.trim();
+    const rel  = document.getElementById('mfRel').value.trim();
+    const text = document.getElementById('mfText').value.trim();
+    if (!name || !text) { showStatus('Please add your name and a memory.', true); return; }
+    mfSubmit.disabled = true;
+    mfSubmit.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/memory', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, relationship: rel, text }),
+      });
+      if (res.ok) {
+        showStatus('Thank you. Your memory will appear once it has been reviewed.');
+        memoryForm.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        showStatus(data.error || 'Something went wrong. Please try again.', true);
+      }
+    } catch {
+      showStatus('Could not reach the server. Please try again later.', true);
+    } finally {
+      mfSubmit.disabled = false;
+      mfSubmit.textContent = 'Submit memory';
+    }
+  });
+
+  loadMemories();
+</script>
+</body>
+</html>
