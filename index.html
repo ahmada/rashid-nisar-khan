@@ -243,10 +243,10 @@
   }
   .hero-quote {
     font-family: var(--serif);
-    font-size: 1.15rem;
+    font-size: clamp(1.35rem, 2.8vw, 2rem);
     font-style: italic;
-    color: var(--ink-light);
-    max-width: 540px;
+    color: var(--ink);
+    max-width: 640px;
     margin: 0 auto;
     line-height: 2;
     animation: fadeUp 0.7s 0.44s ease both;
@@ -700,10 +700,10 @@
   .closing-stars-row { margin-bottom: 2rem; }
   .closing-text {
     font-family: var(--serif);
-    font-size: 1.08rem;
+    font-size: clamp(1.3rem, 3vw, 2rem);
     font-style: italic;
-    color: var(--muted);
-    max-width: 460px;
+    color: var(--ink-light);
+    max-width: 600px;
     margin: 0 auto 2rem;
     line-height: 2;
   }
@@ -936,15 +936,146 @@
     .mf-row { grid-template-columns: 1fr; }
     .memories-grid { column-count: 1; }
     .mf-foot { flex-direction: column; align-items: flex-start; }
+    .page { padding: 0 1.2rem; }
+    .hero-slide { padding-top: 3rem; }
+    .hero-name { font-size: clamp(2.4rem, 10vw, 4rem); }
+    .hero-quote { font-size: 1.1rem; line-height: 1.85; }
+    .closing-text { font-size: 1.2rem; }
+    .section-next { justify-content: center; }
+    .memories-inner { padding: 0 1.2rem; }
+    .memory-card { transform: none !important; }
   }
   @media (min-width: 701px) and (max-width: 900px) {
     .memories-grid { column-count: 2; }
+  }
+
+  /* ── mobile bottom nav (post-farewell) ── */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--parchment);
+    border-top: 1px solid var(--rule);
+    z-index: 150;
+    padding: 0.5rem 0.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .mobile-nav::-webkit-scrollbar { display: none; }
+  .mobile-nav-inner {
+    display: flex;
+    gap: 0.2rem;
+    min-width: max-content;
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .mobile-nav-btn {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    border-radius: 1px;
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+  }
+  .mobile-nav-btn.active { color: var(--parchment); background: var(--green); }
+  .mobile-nav-btn:not(.active):hover { color: var(--green); }
+  @media (min-width: 1101px) { .mobile-nav { display: none !important; } }
+
+  /* ── email signup (publications) ── */
+  .email-signup {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background: rgba(28, 92, 56, 0.04);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--green);
+    position: relative; z-index: 1;
+  }
+  .email-signup-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.4rem;
+  }
+  .email-signup-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+  .email-signup-form {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .email-signup-form input {
+    flex: 1;
+    min-width: 200px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 0.45rem 0;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.22s;
+  }
+  .email-signup-form input::placeholder { color: var(--muted); opacity: 0.55; }
+  .email-signup-form input:focus { border-bottom-color: var(--green); }
+  .email-signup-form button {
+    background: var(--green);
+    color: var(--parchment);
+    border: none;
+    padding: 0.45rem 1.2rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background 0.2s;
+  }
+  .email-signup-form button:hover { background: var(--green-mid); }
+  .email-signup-status {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 0.8rem;
+    min-height: 1.2em;
   }
 </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
+
+<!-- ── mobile bottom nav ── -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <button class="mobile-nav-btn active" data-section="hero">Home</button>
+    <button class="mobile-nav-btn" data-section="biography">A Life</button>
+    <button class="mobile-nav-btn" data-section="stories">Stories</button>
+    <button class="mobile-nav-btn" data-section="poem">Poem</button>
+    <button class="mobile-nav-btn" data-section="legacy">Legacy</button>
+    <button class="mobile-nav-btn" data-section="gallery">Gallery</button>
+    <button class="mobile-nav-btn" data-section="book">Books</button>
+    <button class="mobile-nav-btn" data-section="closing">Farewell</button>
+    <button class="mobile-nav-btn" id="mobileNavMemories" data-section="memories-link" style="color:var(--gold);">Memories</button>
+  </div>
+</nav>
 
 <!-- ── SIDE NAV — right side ── -->
 <nav class="side-nav" id="sideNav" aria-label="Page sections">
@@ -975,6 +1106,10 @@
   <button class="side-nav-item" data-section="book">
     <span class="side-nav-label">Books</span>
     <div class="side-nav-dot"></div>
+  </button>
+  <button class="side-nav-item" id="navMemories" data-section="memories-link">
+    <span class="side-nav-label">Memories</span>
+    <div class="side-nav-dot" style="border-color:var(--gold);"></div>
   </button>
 </nav>
 
@@ -1333,6 +1468,17 @@
       </div>
     </div>
 
+    <!-- email signup -->
+    <div class="email-signup">
+      <p class="email-signup-label">Gardens of the Heart</p>
+      <p class="email-signup-text">Share your email to receive excerpts from the book in your inbox</p>
+      <form class="email-signup-form" id="excerptForm" novalidate>
+        <input type="email" id="excerptEmail" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="email-signup-status" id="excerptStatus"></p>
+    </div>
+
     <div class="section-next">
       <button class="next-btn" data-target="closing">
         Farewell
@@ -1435,7 +1581,13 @@
     const prev = currentSlide;
     currentSlide = next;
     updateNavActive(id);
-    document.getElementById('memories').style.display = (id === 'closing') ? 'block' : 'none';
+    const showMemories = (id === 'closing');
+    document.getElementById('memories').style.display = showMemories ? 'block' : 'none';
+    if (showMemories && !mobileNavUnlocked) {
+      mobileNavUnlocked = true;
+      mobileNav.style.display = 'flex';
+    }
+    updateMobileNavActive(id);
 
     if (!prev) {
       // Initial load — show without transition
@@ -1484,6 +1636,17 @@
   // ── nav active state ──
   const navItems = Array.from(document.querySelectorAll('.side-nav-item'));
 
+  // ── mobile nav ──
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavBtns = Array.from(document.querySelectorAll('.mobile-nav-btn'));
+  let mobileNavUnlocked = false;
+
+  function updateMobileNavActive(id) {
+    mobileNavBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.section === id || (id === 'closing' && btn.dataset.section === 'closing'));
+    });
+  }
+
   function updateNavActive(id) {
     navItems.forEach(item => {
       item.classList.toggle('active', item.dataset.section === id);
@@ -1497,8 +1660,31 @@
 
   // ── wire up side nav buttons ──
   navItems.forEach(item => {
-    item.addEventListener('click', () => goTo(item.dataset.section));
+    item.addEventListener('click', () => {
+      if (item.id === 'navMemories') return; // handled separately
+      goTo(item.dataset.section);
+    });
   });
+
+  // Wire mobile nav buttons
+  mobileNavBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.section === 'memories-link') {
+        document.getElementById('memories').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        goTo(btn.dataset.section);
+      }
+    });
+  });
+
+  // Wire side nav memories button
+  const navMemoriesBtn = document.getElementById('navMemories');
+  if (navMemoriesBtn) {
+    navMemoriesBtn.addEventListener('click', () => {
+      goTo('closing');
+      setTimeout(() => document.getElementById('memories').scrollIntoView({ behavior: 'smooth' }), 600);
+    });
+  }
 
   // ── initial load ──
   const startId = (window.location.hash.slice(1) in
@@ -1685,6 +1871,19 @@
   });
 
   loadMemories();
+
+  // ── excerpt email signup ──
+  const excerptForm = document.getElementById('excerptForm');
+  const excerptStatus = document.getElementById('excerptStatus');
+  if (excerptForm) {
+    excerptForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('excerptEmail').value.trim();
+      if (!email) return;
+      excerptStatus.textContent = 'Thank you — watch your inbox for the first excerpt.';
+      excerptForm.reset();
+    });
+  }
 </script>
 </body>
 </html>
