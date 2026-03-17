@@ -48,7 +48,7 @@ export async function onRequestPost({ request, env }) {
     if (!res.ok && res.status !== 204) {
       const err = await res.text();
       console.error('Brevo error:', res.status, err);
-      return Response.json({ error: `Brevo ${res.status}: ${err}` }, { status: 502, headers: CORS });
+      return Response.json({ error: 'Could not subscribe. Please try again.' }, { status: 502, headers: CORS });
     }
   } catch (err) {
     console.error('Subscribe failed:', err);
