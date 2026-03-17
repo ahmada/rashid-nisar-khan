@@ -4,4 +4,4 @@ pages_build_output_dir = "."
 
 [[kv_namespaces]]
 binding = "MEMORIES"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "a2093c962eee43a097f34bae61a608c9"
