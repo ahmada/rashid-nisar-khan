@@ -38,6 +38,16 @@ export async function onRequestGet({ env }) {
 
 // ── POST: submit a memory ──────────────────────────────────────────
 export async function onRequestPost({ request, env }) {
+  // Rate limit: 3 submissions per IP per 10 minutes
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const rlKey = `ratelimit:${ip}`;
+  const rlRaw = await env.MEMORIES.get(rlKey);
+  const rlCount = rlRaw ? parseInt(rlRaw, 10) : 0;
+  if (rlCount >= 3) {
+    return Response.json({ error: 'Too many submissions. Please try again later.' }, { status: 429, headers: CORS });
+  }
+  await env.MEMORIES.put(rlKey, String(rlCount + 1), { expirationTtl: 600 });
+
   let data;
   try {
     data = await request.json();
