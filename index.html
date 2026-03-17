@@ -400,6 +400,14 @@
     gap: 0 2rem;
   }
   .story-border { background: var(--green); opacity: 0.3; border-radius: 2px; }
+  .story-art {
+    float: right;
+    margin: 0.2rem 0 1rem 1.5rem;
+    width: 200px;
+    opacity: 0.16;
+    shape-outside: margin-box;
+  }
+  .story-art svg { width: 100%; height: auto; display: block; }
   .story-number {
     font-family: var(--mono);
     font-size: 0.65rem;
@@ -1269,73 +1277,6 @@
 
   <!-- ══ STORIES ══ -->
   <section class="slide" id="stories">
-    <div class="section-art" aria-hidden="true">
-      <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Tank side view — 1965 war Pakistan Army -->
-        <!-- Hull -->
-        <path d="M60 160 L70 140 L340 140 L360 160 L340 170 L80 170 Z"
-              stroke="#1c5c38" stroke-width="1.5" stroke-linejoin="round"/>
-        <!-- Front armor slope -->
-        <path d="M60 160 L80 135 L100 140" stroke="#1c5c38" stroke-width="1.3"/>
-        <!-- Hull hatching (shading) -->
-        <line x1="90" y1="142" x2="88" y2="168" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="110" y1="141" x2="108" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="130" y1="141" x2="128" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="150" y1="141" x2="148" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="170" y1="141" x2="168" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="190" y1="141" x2="188" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="210" y1="141" x2="208" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="230" y1="141" x2="228" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="250" y1="141" x2="248" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="270" y1="141" x2="268" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="290" y1="141" x2="288" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="310" y1="141" x2="308" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="330" y1="141" x2="328" y2="169" stroke="#1c5c38" stroke-width="0.5"/>
-        <!-- Turret -->
-        <path d="M160 140 L168 110 L260 108 L272 140 Z"
-              stroke="#1c5c38" stroke-width="1.5" stroke-linejoin="round"/>
-        <!-- Turret hatching -->
-        <line x1="185" y1="112" x2="182" y2="139" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="205" y1="110" x2="202" y2="139" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="225" y1="109" x2="222" y2="139" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="245" y1="109" x2="242" y2="139" stroke="#1c5c38" stroke-width="0.5"/>
-        <!-- Gun barrel -->
-        <line x1="272" y1="120" x2="400" y2="118" stroke="#1c5c38" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="272" y1="124" x2="400" y2="122" stroke="#1c5c38" stroke-width="1"/>
-        <!-- Muzzle brake -->
-        <rect x="392" y="113" width="10" height="12" stroke="#1c5c38" stroke-width="1.2" rx="1"/>
-        <!-- Commander's hatch -->
-        <ellipse cx="215" cy="108" rx="18" ry="6" stroke="#1c5c38" stroke-width="1"/>
-        <circle cx="215" cy="108" r="4" stroke="#1c5c38" stroke-width="0.8"/>
-        <!-- Loader's hatch -->
-        <ellipse cx="248" cy="109" rx="12" ry="5" stroke="#1c5c38" stroke-width="0.9"/>
-        <!-- Road wheels — 6 wheels -->
-        <circle cx="98"  cy="177" r="16" stroke="#1c5c38" stroke-width="1.3"/>
-        <circle cx="98"  cy="177" r="7"  stroke="#1c5c38" stroke-width="0.8"/>
-        <circle cx="140" cy="177" r="16" stroke="#1c5c38" stroke-width="1.3"/>
-        <circle cx="140" cy="177" r="7"  stroke="#1c5c38" stroke-width="0.8"/>
-        <circle cx="182" cy="177" r="16" stroke="#1c5c38" stroke-width="1.3"/>
-        <circle cx="182" cy="177" r="7"  stroke="#1c5c38" stroke-width="0.8"/>
-        <circle cx="224" cy="177" r="16" stroke="#1c5c38" stroke-width="1.3"/>
-        <circle cx="224" cy="177" r="7"  stroke="#1c5c38" stroke-width="0.8"/>
-        <circle cx="266" cy="177" r="16" stroke="#1c5c38" stroke-width="1.3"/>
-        <circle cx="266" cy="177" r="7"  stroke="#1c5c38" stroke-width="0.8"/>
-        <circle cx="308" cy="177" r="16" stroke="#1c5c38" stroke-width="1.3"/>
-        <circle cx="308" cy="177" r="7"  stroke="#1c5c38" stroke-width="0.8"/>
-        <!-- Track link line -->
-        <path d="M75 192 L70 170 L340 170 L345 192 C 345 200 335 200 325 193 L82 193 C 72 200 62 200 75 192 Z"
-              stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
-        <!-- Return rollers -->
-        <circle cx="130" cy="155" r="7" stroke="#1c5c38" stroke-width="0.9"/>
-        <circle cx="200" cy="153" r="7" stroke="#1c5c38" stroke-width="0.9"/>
-        <circle cx="270" cy="153" r="7" stroke="#1c5c38" stroke-width="0.9"/>
-        <!-- Ground shadow line -->
-        <path d="M70 196 C 80 200 320 200 350 196" stroke="#1c5c38" stroke-width="0.8" stroke-dasharray="3 4"/>
-        <!-- Crescent + star on turret side -->
-        <path d="M192 124 A 8 8 0 0 1 207 124" stroke="#1c5c38" stroke-width="1.2" fill="none"/>
-        <circle cx="196" cy="118" r="1.5" fill="#1c5c38"/>
-      </svg>
-    </div>
     <p class="section-label">Three Stories</p>
     <h2>Moments that made him</h2>
     <p>He believed each chapter of life is its own story. Here are three that tell you who he was.</p>
@@ -1347,6 +1288,40 @@
           <p class="story-number">Story_01</p>
           <h3 class="story-title">Lost in a War</h3>
           <p class="story-year">September 1965 &ensp;·&ensp; Pakistan–India War</p>
+          <div class="story-art" aria-hidden="true">
+            <svg viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Tank side view — Chawinda 1965 -->
+              <path d="M28 88 L36 72 L178 72 L190 82 L178 90 L38 90 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M28 88 L38 68 L52 72" stroke="#1c5c38" stroke-width="1.2"/>
+              <line x1="50" y1="74" x2="49" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="65" y1="73" x2="64" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="80" y1="73" x2="79" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="95" y1="73" x2="94" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="110" y1="73" x2="109" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="125" y1="73" x2="124" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="140" y1="73" x2="139" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="155" y1="73" x2="154" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="170" y1="73" x2="169" y2="89" stroke="#1c5c38" stroke-width="0.5"/>
+              <path d="M82 72 L87 52 L142 51 L148 72 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
+              <line x1="100" y1="54" x2="98" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="116" y1="53" x2="114" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="132" y1="53" x2="130" y2="71" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="148" y1="60" x2="205" y2="59" stroke="#1c5c38" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="200" y="55" width="6" height="8" stroke="#1c5c38" stroke-width="1" rx="0.5"/>
+              <ellipse cx="112" cy="51" rx="10" ry="4" stroke="#1c5c38" stroke-width="0.9"/>
+              <circle cx="56"  cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="56"  cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <circle cx="82"  cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="82"  cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <circle cx="108" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="108" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <circle cx="134" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="134" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <circle cx="160" cy="97" r="9" stroke="#1c5c38" stroke-width="1.2"/><circle cx="160" cy="97" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <path d="M40 106 L36 90 L178 90 L182 106 C 180 112 172 112 166 107 L52 107 C 46 112 38 112 40 106 Z" stroke="#1c5c38" stroke-width="1.1" stroke-linejoin="round"/>
+              <circle cx="74"  cy="82" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <circle cx="112" cy="81" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <circle cx="150" cy="81" r="4" stroke="#1c5c38" stroke-width="0.8"/>
+              <path d="M98 62 A 5 5 0 0 1 107 62" stroke="#1c5c38" stroke-width="1.1" fill="none"/>
+              <circle cx="101" cy="58" r="1.2" fill="#1c5c38"/>
+            </svg>
+          </div>
           <p>He was thirteen years old when Cadet College was suddenly shut down as war broke out between Pakistan and India. Three hundred boys scattered for home. Rashid found himself alone on a railway platform in Rawalpindi, in a city he did not know, with no relatives and no plan.</p>
           <p>He boarded a bus to Peshawar — packed with Pathan tribesmen, a man who chain-smoked K2 cigarettes, and an old man who offered him a pinch of <em>naswar</em> before charitably deciding that it was not suitable for young people. He navigated two more buses across an unfamiliar city, recognized a <em>tandoor</em> shop he had visited once the previous year, and traced his way to his uncle's home by memory alone.</p>
           <p>While he ate olives and bread in Peshawar and watched anti-aircraft fire light up the night sky, his mother was driving through artillery bombardment, searching for him in a deserted Sialkot. His father was commanding his regiment in the tank battle of Chawinda that military historians would later call the battle that saved Pakistan. None of them knew where the others were. When it was over, the son of a war hero returned to school — and began, for the first time, to take his studies seriously.</p>
@@ -1359,6 +1334,50 @@
           <p class="story-number">Story_02</p>
           <h3 class="story-title">Apollo Plum Jam</h3>
           <p class="story-year">1969 &ensp;·&ensp; Cadet College Hassan Abdal</p>
+          <div class="story-art" aria-hidden="true">
+            <svg viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Apollo Plum Jam rocket — 6 jam tins + cone + fins -->
+              <!-- Launch stand -->
+              <line x1="80" y1="220" x2="80" y2="235" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="65" y1="235" x2="95" y2="235" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="65" y1="235" x2="55" y2="248" stroke="#1c5c38" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="95" y1="235" x2="105" y2="248" stroke="#1c5c38" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="80" y1="235" x2="80" y2="248" stroke="#1c5c38" stroke-width="1.2" stroke-linecap="round"/>
+              <!-- 6 plum jam tins stacked (cylinder segments) -->
+              <rect x="64" y="188" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+              <line x1="64" y1="199" x2="96" y2="199" stroke="#1c5c38" stroke-width="0.7"/>
+              <rect x="64" y="166" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+              <line x1="64" y1="177" x2="96" y2="177" stroke="#1c5c38" stroke-width="0.7"/>
+              <rect x="64" y="144" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+              <line x1="64" y1="155" x2="96" y2="155" stroke="#1c5c38" stroke-width="0.7"/>
+              <rect x="64" y="122" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+              <line x1="64" y1="133" x2="96" y2="133" stroke="#1c5c38" stroke-width="0.7"/>
+              <rect x="64" y="100" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+              <line x1="64" y1="111" x2="96" y2="111" stroke="#1c5c38" stroke-width="0.7"/>
+              <rect x="64" y="78" width="32" height="22" stroke="#1c5c38" stroke-width="1.3" rx="2"/>
+              <line x1="64" y1="89" x2="96" y2="89" stroke="#1c5c38" stroke-width="0.7"/>
+              <!-- Nosecone -->
+              <path d="M64 78 L80 42 L96 78 Z" stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
+              <line x1="72" y1="62" x2="80" y2="46" stroke="#1c5c38" stroke-width="0.6"/>
+              <line x1="88" y1="62" x2="80" y2="46" stroke="#1c5c38" stroke-width="0.6"/>
+              <!-- Fins (4) — side visible -->
+              <path d="M64 200 L48 220 L64 215 Z" stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M96 200 L112 220 L96 215 Z" stroke="#1c5c38" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M66 205 L58 225 L66 222 Z" stroke="#1c5c38" stroke-width="0.8" stroke-linejoin="round"/>
+              <path d="M94 205 L102 225 L94 222 Z" stroke="#1c5c38" stroke-width="0.8" stroke-linejoin="round"/>
+              <!-- Welded seam marks (tin joints) -->
+              <line x1="64" y1="210" x2="62" y2="210" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="96" y1="210" x2="98" y2="210" stroke="#1c5c38" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Flame + smoke puff at bottom -->
+              <path d="M72 222 C 68 230 62 236 65 242 C 68 248 74 244 72 252" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
+              <path d="M80 222 C 80 232 78 240 82 246 C 85 252 84 258 80 258" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
+              <path d="M88 222 C 92 230 98 236 95 242 C 92 248 86 244 88 252" stroke="#1c5c38" stroke-width="1.1" stroke-linecap="round"/>
+              <!-- Label on tin -->
+              <rect x="68" y="192" width="24" height="9" rx="1" stroke="#1c5c38" stroke-width="0.7"/>
+              <line x1="70" y1="195" x2="90" y2="195" stroke="#1c5c38" stroke-width="0.6"/>
+              <line x1="70" y1="198" x2="86" y2="198" stroke="#1c5c38" stroke-width="0.5"/>
+            </svg>
+          </div>
           <p>The Apollo moon landing had just captivated the world. Rashid and his friend Pasha, both among the top chemistry students at Cadet College and both strongly opposed to the mandatory 3-mile morning runs, hatched a plan: if they could propose a sufficiently impressive scientific project, they would be excused from physical training.</p>
           <p>They decided to build Pakistan's first rocket. The fuel would be a mixture of sugar and potassium sulphate. The body would be welded from six empty plum jam tins — the cheapest jam the college could afford and one they had eaten far too much of. The scientific mission: to study the effects of gravity on the mental agility of ants, using an enclosed maze and a two-stage parachute system. They named it <em>Apollo Plum Jam</em>.</p>
           <p>The test firing, conducted before a crowd of classmates and their bemused chemistry teacher Mr. Saleemi, ended in a spectacular fireball that scorched the lab tables, sent sulphuric acid across the floor, and scattered weights under every desk — leaving the rocket standing eerily above the smoke, entirely empty of fuel. An outdoor test followed, producing a rocket that lifted a fraction of an inch, flipped over, and burned out on the ground with great dignity and no altitude. They were back to running on the Grand Trunk Road within ten days. He told this story for the rest of his life.</p>
@@ -1371,6 +1390,57 @@
           <p class="story-number">Story_03</p>
           <h3 class="story-title">The First Sale</h3>
           <p class="story-year">March 1983 &ensp;·&ensp; Wrentham, Massachusetts</p>
+          <div class="story-art" aria-hidden="true">
+            <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- IBM 3270 COBOL terminal — pen and ink -->
+              <!-- Monitor housing -->
+              <rect x="20" y="12" width="160" height="128" rx="8" stroke="#1c5c38" stroke-width="1.5"/>
+              <!-- CRT curvature hint -->
+              <path d="M28 12 C 24 14 20 18 20 24" stroke="#1c5c38" stroke-width="0.8"/>
+              <path d="M172 12 C 176 14 180 18 180 24" stroke="#1c5c38" stroke-width="0.8"/>
+              <!-- Screen bezel -->
+              <rect x="30" y="22" width="140" height="108" rx="4" stroke="#1c5c38" stroke-width="1.1"/>
+              <!-- Screen surface -->
+              <rect x="36" y="28" width="128" height="96" rx="2" stroke="#1c5c38" stroke-width="0.8"/>
+              <!-- Screen glare -->
+              <path d="M42 32 C 50 30 62 30 70 34" stroke="#1c5c38" stroke-width="0.7" stroke-linecap="round"/>
+              <!-- COBOL code lines on screen -->
+              <line x1="44" y1="42" x2="110" y2="42" stroke="#1c5c38" stroke-width="1.2"/>
+              <line x1="44" y1="51" x2="92"  y2="51" stroke="#1c5c38" stroke-width="0.8"/>
+              <line x1="44" y1="60" x2="155" y2="60" stroke="#1c5c38" stroke-width="0.8"/>
+              <line x1="52" y1="69" x2="130" y2="69" stroke="#1c5c38" stroke-width="0.8"/>
+              <line x1="52" y1="78" x2="148" y2="78" stroke="#1c5c38" stroke-width="0.8"/>
+              <line x1="52" y1="87" x2="118" y2="87" stroke="#1c5c38" stroke-width="0.8"/>
+              <line x1="44" y1="96" x2="155" y2="96" stroke="#1c5c38" stroke-width="0.8"/>
+              <line x1="44" y1="105" x2="100" y2="105" stroke="#1c5c38" stroke-width="0.8"/>
+              <!-- Cursor blink -->
+              <rect x="104" y="101" width="8" height="8" stroke="#1c5c38" stroke-width="1.1"/>
+              <!-- Monitor base/neck -->
+              <path d="M80 140 L80 154 L120 154 L120 140" stroke="#1c5c38" stroke-width="1.3" stroke-linejoin="round"/>
+              <rect x="55" y="154" width="90" height="10" rx="2" stroke="#1c5c38" stroke-width="1.2"/>
+              <!-- Keyboard -->
+              <rect x="15" y="170" width="170" height="42" rx="3" stroke="#1c5c38" stroke-width="1.4"/>
+              <!-- Key rows -->
+              <line x1="22" y1="182" x2="178" y2="182" stroke="#1c5c38" stroke-width="0.6"/>
+              <line x1="22" y1="194" x2="178" y2="194" stroke="#1c5c38" stroke-width="0.6"/>
+              <line x1="22" y1="206" x2="178" y2="206" stroke="#1c5c38" stroke-width="0.6"/>
+              <!-- Key separators row 1 -->
+              <line x1="32"  y1="170" x2="32"  y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="44"  y1="170" x2="44"  y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="56"  y1="170" x2="56"  y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="68"  y1="170" x2="68"  y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="80"  y1="170" x2="80"  y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="92"  y1="170" x2="92"  y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="104" y1="170" x2="104" y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="116" y1="170" x2="116" y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="128" y1="170" x2="128" y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="140" y1="170" x2="140" y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="152" y1="170" x2="152" y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <line x1="164" y1="170" x2="164" y2="182" stroke="#1c5c38" stroke-width="0.5"/>
+              <!-- Spacebar row -->
+              <rect x="60" y="207" width="80" height="5" rx="1" stroke="#1c5c38" stroke-width="0.8"/>
+            </svg>
+          </div>
           <p>For six months, Rashid had been debugging his invention alone in the damp basement of a small house, reaching Frust17 — his own name for the seventeenth version of a debugging program, so named by abbreviating the word "frustration." Late one night, covering the computer screen with a sheet of paper to reduce the glare, he spotted a glitch lasting ten-billionths of a second that had been crashing the system at random. He pirated the fix from a chip mounted on a farewell trophy given to him by a former colleague, repaired the circuit by flashlight, and went outside to sit on the front steps and listen to the gypsy moths in the trees.</p>
           <p>When he finally brought his SIMA system — a personal computer interface for industrial testing machines — to his first real prospect, the meeting lasted one week of eighteen-hour days. The customer was Albany International, a NASA subcontractor testing the heat-shield fabric that protected the Space Shuttle during re-entry. The program manager, a dour no-nonsense man named Fred, gave him a conditional purchase order: make it work in one week, or take it home. Rashid made it work in a week.</p>
           <p>He drove home from that first sale remembering, with quiet amusement, the Apollo Plum Jam rocket he had tried to build in high school — and how this was the closest he would ever get to the astronauts. Instron, the industry giant with 80% market share, had predicted the entire market for such systems was two units per year. Rashid sold six in his first twelve months, from a basement, with one employee and a cat named Billo.</p>
@@ -1587,34 +1657,6 @@
 
   <!-- ══ GALLERY ══ -->
   <section class="slide" id="gallery">
-    <div class="section-art" aria-hidden="true">
-      <svg viewBox="0 0 360 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Overlapping photograph frames — scattered -->
-        <!-- Frame 1 (back, rotated) -->
-        <rect x="80" y="60" width="180" height="220" rx="2" stroke="#1c5c38" stroke-width="1.3"
-              transform="rotate(-8 170 170)"/>
-        <rect x="94" y="74" width="152" height="192" rx="1" stroke="#1c5c38" stroke-width="0.7"
-              transform="rotate(-8 170 170)"/>
-        <!-- Frame 2 (middle, slight tilt) -->
-        <rect x="100" y="80" width="175" height="210" rx="2" stroke="#1c5c38" stroke-width="1.4"
-              transform="rotate(5 187 185)"/>
-        <rect x="114" y="94" width="147" height="182" rx="1" stroke="#1c5c38" stroke-width="0.7"
-              transform="rotate(5 187 185)"/>
-        <!-- Frame 3 (front, straight) -->
-        <rect x="95" y="70" width="170" height="210" rx="2" stroke="#1c5c38" stroke-width="1.6"/>
-        <rect x="108" y="83" width="144" height="184" rx="1" stroke="#1c5c38" stroke-width="0.8"/>
-        <!-- Photo content suggestion — horizon line and figure silhouette -->
-        <line x1="108" y1="200" x2="252" y2="200" stroke="#1c5c38" stroke-width="0.7"/>
-        <!-- Abstract figure -->
-        <circle cx="160" cy="155" r="14" stroke="#1c5c38" stroke-width="0.8"/>
-        <path d="M152 169 C 148 190 148 205 152 215" stroke="#1c5c38" stroke-width="0.8" stroke-linecap="round"/>
-        <path d="M168 169 C 172 190 172 205 168 215" stroke="#1c5c38" stroke-width="0.8" stroke-linecap="round"/>
-        <!-- Corner date stamp look -->
-        <rect x="210" y="230" width="38" height="22" rx="1" stroke="#1c5c38" stroke-width="0.7"/>
-        <line x1="216" y1="238" x2="242" y2="238" stroke="#1c5c38" stroke-width="0.5"/>
-        <line x1="216" y1="244" x2="236" y2="244" stroke="#1c5c38" stroke-width="0.5"/>
-      </svg>
-    </div>
     <p class="section-label">Gallery</p>
     <h2>A life in photographs</h2>
     <p>From Rawalpindi to Raleigh. Photographs coming soon.</p>
@@ -1658,56 +1700,6 @@
 
   <!-- ══ PUBLICATIONS ══ -->
   <section class="slide" id="book">
-    <div class="section-art" aria-hidden="true">
-      <svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Open book — two-page spread, slight perspective -->
-        <!-- Left page -->
-        <path d="M60 60 C 58 58 55 250 60 255 L 210 248 L 210 52 Z"
-              stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
-        <!-- Right page -->
-        <path d="M210 52 L 210 248 L 360 255 C 365 252 362 60 360 60 Z"
-              stroke="#1c5c38" stroke-width="1.4" stroke-linejoin="round"/>
-        <!-- Spine shadow -->
-        <path d="M210 52 C 208 100 208 200 210 248" stroke="#1c5c38" stroke-width="2.5"/>
-        <!-- Page curl at bottom -->
-        <path d="M60 255 C 80 262 140 260 210 248" stroke="#1c5c38" stroke-width="0.8"/>
-        <path d="M210 248 C 280 260 340 262 360 255" stroke="#1c5c38" stroke-width="0.8"/>
-        <!-- Left page text lines -->
-        <line x1="80"  y1="95"  x2="195" y2="94"  stroke="#1c5c38" stroke-width="1.1"/>
-        <line x1="80"  y1="110" x2="195" y2="109" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="125" x2="195" y2="124" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="140" x2="185" y2="139" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="155" x2="195" y2="154" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="170" x2="180" y2="169" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="185" x2="195" y2="184" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="200" x2="190" y2="199" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="215" x2="195" y2="214" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="80"  y1="230" x2="175" y2="229" stroke="#1c5c38" stroke-width="0.8"/>
-        <!-- Left page title line (thicker) -->
-        <line x1="80" y1="78" x2="160" y2="77" stroke="#1c5c38" stroke-width="1.6"/>
-        <!-- Right page text lines -->
-        <line x1="225" y1="95"  x2="340" y2="94"  stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="110" x2="340" y2="109" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="125" x2="340" y2="124" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="140" x2="330" y2="139" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="155" x2="340" y2="154" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="170" x2="335" y2="169" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="185" x2="340" y2="184" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="200" x2="328" y2="199" stroke="#1c5c38" stroke-width="0.8"/>
-        <line x1="225" y1="215" x2="340" y2="214" stroke="#1c5c38" stroke-width="0.35"/>
-        <line x1="225" y1="230" x2="320" y2="229" stroke="#1c5c38" stroke-width="0.8"/>
-        <!-- Marginalia marks on left page -->
-        <path d="M195 138 L202 138 L202 170 L195 170" stroke="#1c5c38" stroke-width="0.7"/>
-        <!-- Bookmark ribbon -->
-        <path d="M330 52 L330 88 L324 82 L318 88 L318 52" stroke="#1c5c38" stroke-width="1"/>
-        <!-- Urdu-style script decoration (right page header) -->
-        <path d="M260 78 C 270 72 285 74 290 80 C 295 86 288 92 280 90 C 272 88 268 82 275 78"
-              stroke="#1c5c38" stroke-width="0.9" stroke-linecap="round"/>
-        <!-- Page shadow at spine -->
-        <path d="M195 80 C 200 164 200 180 195 240" stroke="#1c5c38" stroke-width="0.5"/>
-        <path d="M225 80 C 220 164 220 180 225 240" stroke="#1c5c38" stroke-width="0.5"/>
-      </svg>
-    </div>
     <p class="section-label">Publications</p>
     <h2>Two books, one life's work</h2>
     <p>He wrote the way he built companies — with patience, precision, and a refusal to leave things unfinished. One book is the record of a field he helped define. The other is the record of a life.</p>
